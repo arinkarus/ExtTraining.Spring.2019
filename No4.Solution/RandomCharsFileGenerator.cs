@@ -7,9 +7,9 @@ namespace No4.Solution
 {
     public class RandomCharsFileGenerator: BasicRandomFileGenerator
     { 
-        public RandomCharsFileGenerator(string dir, string fileExt): base(dir, fileExt)
+        public RandomCharsFileGenerator(string workingDirectory,
+            string fileExtension): base(workingDirectory, fileExtension)
         {
-            
         }
 
         protected override byte[] GenerateFileContent(int contentLength)

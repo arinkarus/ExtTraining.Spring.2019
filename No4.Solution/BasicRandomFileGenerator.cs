@@ -9,16 +9,27 @@ namespace No4.Solution
     public abstract class BasicRandomFileGenerator
     {
         private string workingDirectory;
-
         private string fileExtension;
+
         public string WorkingDirectory
         {
-            get { return this.workingDirectory;  }
-
+            get
+            {
+                return this.workingDirectory;
+            }
             set
             {
-                if (value == null) throw new ArgumentNullException("Directory can't be null");
-                if (value == string.Empty) throw new ArgumentException("Directory string can't be empty");
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Directory can't be null");
+                }
+
+
+                if (value == string.Empty)
+                {
+                    throw new ArgumentException("Directory string can't be empty");
+                }
+
                 this.workingDirectory = value;
             }
         }
@@ -28,8 +39,16 @@ namespace No4.Solution
 
             set
             {
-                if (value == null) throw new ArgumentNullException("File extension can't be null");
-                if (value == string.Empty) throw new ArgumentException("Directory string can't be empty");
+                if (value == null)
+                {
+                    throw new ArgumentNullException("File extension can't be null");
+                }
+
+                if (value == string.Empty)
+                {
+                    throw new ArgumentException("Directory string can't be empty");
+                }
+
                 this.fileExtension = value;
             }
         }
@@ -45,9 +64,7 @@ namespace No4.Solution
             for (var i = 0; i < filesCount; ++i)
             {
                 var generatedFileContent = this.GenerateFileContent(contentLength);
-
                 var generatedFileName = $"{Guid.NewGuid()}{this.FileExtension}";
-
                 this.WriteBytesToFile(generatedFileName, generatedFileContent);
             }
         }

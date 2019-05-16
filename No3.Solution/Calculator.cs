@@ -11,12 +11,12 @@ namespace No3
         {
             if (values == null)
             {
-                throw  new ArgumentNullException(nameof(values));
+                throw new ArgumentNullException($"Values can't be null {nameof(values)}");
             }
 
             if (averagingMethod == null)
             {
-                throw new ArgumentNullException(nameof(averagingMethod));
+                throw new ArgumentNullException($"Averaging method can't be null nameof(averagingMethod)");
             }
 
             return averagingMethod.CalculateAverage(values);
@@ -26,30 +26,30 @@ namespace No3
         {
             if (values == null)
             {
-                throw new ArgumentNullException(nameof(values));
+                throw new ArgumentNullException($"Values can't be null {nameof(values)}");
             }
 
             if (averagingMethod == null)
             {
-                throw new ArgumentNullException(nameof(averagingMethod));
+                throw new ArgumentNullException($"Averaging method can't be null nameof(averagingMethod)");
             }
 
-            return this.CalculateAverage(values, new Wrapper(averagingMethod));
-        }
-    }
-
-    internal class Wrapper : IAveragingMethod
-    {
-        private readonly Func<IEnumerable<double>, double> averagingMethod;
-
-        public Wrapper(Func<IEnumerable<double>, double> averagingMethod)
-        {
-            this.averagingMethod = averagingMethod ?? throw new ArgumentNullException("AveragingMethod can't be null");
+            return this.CalculateAverage(values, new WrapperForDelegare(averagingMethod));
         }
 
-        public double CalculateAverage(IEnumerable<double> values)
+        internal class WrapperForDelegare : IAveragingMethod
         {
-            return this.averagingMethod(values);
+            private readonly Func<IEnumerable<double>, double> averagingMethod;
+
+            public WrapperForDelegare(Func<IEnumerable<double>, double> averagingMethod)
+            {
+                this.averagingMethod = averagingMethod ?? throw new ArgumentNullException("AveragingMethod can't be null");
+            }
+
+            public double CalculateAverage(IEnumerable<double> values)
+            {
+                return this.averagingMethod(values);
+            }
         }
     }
 }
