@@ -5,14 +5,14 @@ namespace No2
 {
     public class Stock 
     {
-        public event EventHandler<StockInfoChangedEventArgs> StockInfoChanged;
+        public int USDValue { get; private set; }
+        public int Euro { get; private set; }
 
-        private int USDValue;
-        private int Euro;
+        public event EventHandler<StockInfoChangedEventArgs> StockInfoChanged;
 
         public void OnStockInfoChanged()
         {
-            StockInfoChanged?.Invoke(this, new StockInfoChangedEventArgs() { USD = this.Euro, Euro = this.Euro });
+            this.StockInfoChanged?.Invoke(this, new StockInfoChangedEventArgs() { USD = this.Euro, Euro = this.Euro });
         }
 
         public void Market()

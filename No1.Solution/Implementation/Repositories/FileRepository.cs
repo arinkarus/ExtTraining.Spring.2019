@@ -10,8 +10,7 @@ namespace No1.Solution.Implementation
     public class FileRepository : IRepository
     {
         public void Create(string password)
-        {
-            
+        {        
         }
     }
 }

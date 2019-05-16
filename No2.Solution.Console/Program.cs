@@ -23,9 +23,8 @@ namespace No2.Solution.Console
             stock.StockInfoChanged -= bank.Update;
 
             stock.Market();
-
+      
             stock.StockInfoChanged -= broker.Update;
-
             stock.Market();
 
             System.Console.ReadLine();

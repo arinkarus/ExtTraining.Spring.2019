@@ -11,7 +11,6 @@ namespace No1.Solution.Implementation
     {
         public void Create(string password)
         {
-            
         }
     }
 }

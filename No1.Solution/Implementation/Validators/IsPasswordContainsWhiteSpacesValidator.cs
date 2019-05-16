@@ -11,8 +11,11 @@ namespace No1.Solution.Implementation
         public (bool, string) IsValid(string password)
         {
             if (password.Any(char.IsWhiteSpace))
+            {
                 return (false, $"{password} has white spaces that are not allowed!");
-            return (true, $"{password} doesn't containt white spaces");
+            }
+
+            return (true, $"{password} doesn't contain white spaces");
         }
     }
 }

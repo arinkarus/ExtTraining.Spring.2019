@@ -19,7 +19,7 @@ namespace No1
         public (bool, string) VerifyPassword(string password)
         {
             if (password == null)
-                throw new ArgumentException($"{password} is null arg");
+                throw new ArgumentNullException($"{password} is null arg");
 
             var validationResult = this.validator.IsValid(password);
             if (!validationResult.Item1)

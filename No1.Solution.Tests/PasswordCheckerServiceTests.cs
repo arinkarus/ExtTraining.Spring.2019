@@ -48,5 +48,23 @@ namespace No1.Solution.Tests
             Assert.AreEqual(expectedMessage, messageActual);
             Assert.AreEqual(isValid, isValidActual);
         }
+
+        [Test]
+        public void Verify_PasswordIsNull_ThrowArgumentException()
+        {
+            var passwordCheckerService = new PasswordCheckerService(new SqlRepository(), new StandartPasswordValidator());
+            Assert.Throws<ArgumentNullException>(() =>
+            passwordCheckerService.VerifyPassword(null));
+        }
+
+        [Test]
+        public void Construct_ValidatorIsNull_ThrowArgumentException() =>
+            Assert.Throws<ArgumentNullException>(() =>
+             new PasswordCheckerService(new FileRepository(), null));
+
+        [Test]
+        public void Construct_RepositoryIsNull_ThrowArgumentException() =>
+            Assert.Throws<ArgumentNullException>(() => 
+             new PasswordCheckerService(null, new IsPasswordHasUntrimmedWhiteSpaces()));
     }
 }
