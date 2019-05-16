@@ -39,7 +39,7 @@ namespace No3.Solution.Tests
         {
             Calculator calculator = new Calculator();
             
-            double expected = 45.5;
+            double expected = 13.25;
 
             double actual = calculator.CalculateAverage(values.ToList(), (val) => val.Sum() / val.Count());
 
