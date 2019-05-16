@@ -9,7 +9,17 @@ namespace No6
     public class SequenceGenerator<T>
     {
         public IEnumerable<T> Generate(int count, T firstItem, T secondItem, Func<T, T, T> rule)
-        {
+        { 
+            if (ReferenceEquals(firstItem, null))
+            {
+                throw new ArgumentNullException("First item can't be null");
+            }
+
+            if (ReferenceEquals(secondItem, null))
+            {
+                throw new ArgumentNullException("Second item can't be null");
+            }
+
             if (rule == null)
             {
                 throw new ArgumentNullException("Rule can't be null");
