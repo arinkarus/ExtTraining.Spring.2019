@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace No6.Solution.Tests
@@ -37,6 +38,14 @@ namespace No6.Solution.Tests
             {
                 Assert.AreEqual(expected[i], actual[i], precision);
             }
+        }
+
+        [Test]
+        public void Generator_RuleIsNull_ThrowArgumentException()
+        {
+            var generator = new SequenceGenerator<double>();
+            Assert.Throws<ArgumentNullException>(() =>
+                generator.Generate(20, 1, 2, null));
         }
     }
 }
