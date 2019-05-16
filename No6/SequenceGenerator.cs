@@ -10,6 +10,11 @@ namespace No6
     {
         public IEnumerable<T> Generate(int count, T firstItem, T secondItem, Func<T, T, T> rule)
         {
+            if (rule == null)
+            {
+                throw new ArgumentNullException("Rule can't be null");
+            }
+
             if (count <= 0)
             {
                 throw new ArgumentException("Count can't be null");
