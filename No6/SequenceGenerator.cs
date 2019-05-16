@@ -10,24 +10,24 @@ namespace No6
     {
         public IEnumerable<T> Generate(int count, T firstItem, T secondItem, Func<T, T, T> rule)
         { 
-            if (ReferenceEquals(firstItem, null))
+            if (firstItem == null)
             {
-                throw new ArgumentNullException("First item can't be null");
+                throw new ArgumentNullException($"First item can't be null {nameof(firstItem)}");
             }
 
-            if (ReferenceEquals(secondItem, null))
+            if (secondItem == null)
             {
-                throw new ArgumentNullException("Second item can't be null");
+                throw new ArgumentNullException($"Second item can't be null {nameof(secondItem)}");
             }
 
             if (rule == null)
             {
-                throw new ArgumentNullException("Rule can't be null");
+                throw new ArgumentNullException($"Rule can't be null {nameof(rule)}");
             }
 
             if (count <= 0)
             {
-                throw new ArgumentException("Count can't be null");
+                throw new ArgumentException($"Count can't be null {nameof(count)}");
             }
 
             IEnumerable<T> GetValues()

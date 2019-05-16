@@ -33,6 +33,7 @@ namespace No4.Solution
                 this.workingDirectory = value;
             }
         }
+
         public string FileExtension
         {
             get { return this.fileExtension;  }

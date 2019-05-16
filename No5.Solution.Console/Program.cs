@@ -10,7 +10,6 @@ namespace No5.Solution.Console
             var boldText = new BoldText { Text = "Bold text" };
             var hyperLink = new HyperLink { Text = "HyperLink", Url = "someurl.com" };
             var plainText = new PlainText { Text = "PlainText" };
-
             List<DocumentPart> parts = new List<DocumentPart>()
                 { boldText, hyperLink, plainText };
             var document = new Document(new 
